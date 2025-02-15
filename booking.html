@@ -58,16 +58,17 @@
     </footer>
 
     <!-- Load EmailJS Script -->
-    <script type="text/javascript"
+
+<script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function() {
-            emailjs.init({
-                publicKey: "_2x7sz1VzCQG_4mL1" // Replace with your actual Public Key
-            });
-        });
-    </script>
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "_2x7sz1VzCQG_4mL1",
+      });
+   })();
+</script>
 
     <!-- Load JavaScript -->
     <script src="js/script.js"></script>
