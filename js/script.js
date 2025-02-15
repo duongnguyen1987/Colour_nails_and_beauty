@@ -9,35 +9,26 @@ document.getElementById("booking-form").addEventListener("submit", function(even
     let date = document.getElementById("date").value;
     let time = document.getElementById("time").value;
 
-    // Simple validation
-    if (!name || !email || !phone || !date || !time) {
-        alert("Please fill out all fields.");
-        return;
-    }
-
-    // Confirmation message
-    document.getElementById("confirmation-message").innerHTML = 
-        `Thank you, ${name}! Your ${service} appointment is booked for ${date} at ${time}. We'll contact you at ${phone}.`;
-
-    // Optional: Send email confirmation using EmailJS
-    sendEmail(name, email, phone, service, date, time);
-});
-
-// Function to send booking details via email (optional)
-function sendEmail(name, email, phone, service, date, time) {
-    emailjs.send("service_lo04nma", "template_my82eqo", {
-        from_name: name,
-        from_email: email,
+    // Ensure EmailJS template variables match exactly
+    let emailParams = {
+        name: name,         // MUST match EmailJS template variable
+        email: email,
         phone: phone,
         service: service,
         date: date,
         time: time
-    }).then(
+    };
+
+    // Send email via EmailJS
+    emailjs.send("service_lo04nma", "template_my82eqo", emailParams)
+    .then(
         function(response) {
             console.log("SUCCESS!", response.status, response.text);
+            alert("Your booking is confirmed! Check your email.");
         },
         function(error) {
             console.log("FAILED...", error);
+            alert("Failed to send confirmation email. Please check console.");
         }
     );
-}
+});
