@@ -25,7 +25,7 @@ document.getElementById("booking-form").addEventListener("submit", function(even
 
 // Function to send booking details via email (optional)
 function sendEmail(name, email, phone, service, date, time) {
-    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+    emailjs.send("Colour_nails_and_beauty", "template_email", {
         from_name: name,
         from_email: email,
         phone: phone,
